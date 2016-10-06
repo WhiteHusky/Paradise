@@ -250,7 +250,7 @@
 		return
 
 	Bumped(var/atom/movable/AM) //Go straight into the chute
-		if(istype(AM, /obj/item/projectile))  return
+		if(istype(AM, /obj/item/projectile) || !flushing)  return // Not only check for projectiles, prevent it from stuff going in while flushing so packages don't get sent to unintended destinations
 		switch(dir)
 			if(NORTH)
 				if(AM.loc.y != loc.y+1) return
